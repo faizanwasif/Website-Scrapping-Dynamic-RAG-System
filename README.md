@@ -252,11 +252,3 @@ This system is based on research and technologies discussed in:
 3. Web Scraping Integration
 4. Dynamic Retrieval: Turning Scraped Data into Graph-Ready Nodes
 5. Latency Optimization: Speeding Up Real-Time RAG in Production
-
-## License
-
-MIT License
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
