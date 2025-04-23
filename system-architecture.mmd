@@ -1,0 +1,83 @@
+graph TD
+    subgraph "User Interface"
+        UI[User Query Interface]
+    end
+
+    subgraph "RAG2System"
+        R2[RAG2System]
+        QA[Query Analysis]
+        WS[Website Selection]
+        CR[Crawling & Retrieval]
+        BM[BM25 Filtering]
+        RG[Response Generation]
+    end
+
+    subgraph "Crawling Components"
+        DW[DynamicWebsiteRAG]
+        C4A[Crawl4AIRagAdapter]
+        DWP[Playwright Browser]
+        C4P[Python Process]
+    end
+
+    subgraph "LangGraph Orchestration"
+        LG[LangGraphRAG]
+        PQ[Process Query]
+        CW[Crawl Websites]
+        FD[Filter Documents]
+        GR[Generate Response]
+    end
+
+    subgraph "Storage"
+        KB[Knowledge Base]
+        VC[Vector Cache]
+        DC[Document Cache]
+    end
+
+    subgraph "External Services"
+        OAI[OpenAI API]
+        WEB[Web]
+    end
+
+    UI --> R2
+    R2 --> QA
+    QA --> WS
+    WS --> CR
+    CR --> BM
+    BM --> RG
+    RG --> UI
+
+    CR --> DW
+    CR --> C4A
+    DW --> DWP
+    C4A --> C4P
+    DWP --> WEB
+    C4P --> WEB
+
+    R2 --> LG
+    LG --> PQ
+    PQ --> CW
+    CW --> FD
+    FD --> GR
+    GR --> UI
+
+    DW --> KB
+    C4A --> KB
+    KB --> VC
+    KB --> DC
+    VC --> BM
+    DC --> BM
+
+    QA --> OAI
+    RG --> OAI
+    PQ --> OAI
+    GR --> OAI
+
+    classDef primary fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef secondary fill:#bbf,stroke:#333,stroke-width:1px;
+    classDef storage fill:#ffa,stroke:#333,stroke-width:1px;
+    classDef external fill:#afa,stroke:#333,stroke-width:1px;
+
+    class R2,QA,WS,CR,BM,RG primary;
+    class DW,C4A,DWP,C4P,LG,PQ,CW,FD,GR secondary;
+    class KB,VC,DC storage;
+    class OAI,WEB,UI external;
