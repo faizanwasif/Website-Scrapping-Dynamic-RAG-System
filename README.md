@@ -28,7 +28,7 @@ The system consists of several interconnected components:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/dynamic-website-rag.git
+git clone https://github.com/faizanwasif/Website-Scrapping-Dynamic-RAG-System
 cd dynamic-website-rag
 
 # Install Node.js dependencies
